@@ -1,3 +1,5 @@
+import PokemonList from "../pokemonList/PokemonList"
+
 function Search(){
     return(
         <>
