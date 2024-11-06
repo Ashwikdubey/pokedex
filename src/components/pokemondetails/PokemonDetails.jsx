@@ -1,25 +1,9 @@
-import axios from "axios"
-import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { loadDetails } from "../hooks/usePokemonDetails"
 
-function PokemonDetails(){
-    const[details,setDetails]=useState({})
-    const {id}=useParams()
-    const load=async function(){
-        const response=await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`)
-        console.log(response)
-        const res={
-            name:response.data.name,
-            height:response.data.height,
-            weight:response.data.weight,
-            types:response.data.types.map((t)=>t.type.name),
-            image:response.data.sprites.other.dream_world.front_default 
-        }
-        console.log(res)
-        setDetails(res)
-    }
-    useEffect(()=>{load()},[])
+function PokemonDetails({pokemonName}){
+  const details=loadDetails(pokemonName)
     return(
+        <>
         <div className="flex items-center justify-center p-20">
         <div className="flex space-x-5  items-center">
             <img src={details.image} className="h-72 w-72" alt="" />
@@ -37,6 +21,8 @@ function PokemonDetails(){
             </div>
         </div>
         </div>
+        </>
+        
     )
 }
 export default PokemonDetails
