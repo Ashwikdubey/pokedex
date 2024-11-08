@@ -2,7 +2,8 @@ import Pokemon from "../pokemon/Pokemon"
 import {loadList} from "../hooks/usePokemonList"
 
 function PokemonList(){
-    const pokemonListState=loadList()
+    const [pokemonListState,setPokemonListState]=loadList()
+    console.log(pokemonListState)
     return (
         <>
         <div>

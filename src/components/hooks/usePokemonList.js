@@ -48,5 +48,5 @@ export function loadList(){
       }))
     }
     useEffect(()=>{load()},[pokemonListState.pokedexURL])
-    return pokemonListState
+    return[pokemonListState,setPokemonListState]
 }
